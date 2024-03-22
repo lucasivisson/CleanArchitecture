@@ -21,13 +21,13 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    // semi: 'off',
-    // '@typescript-eslint/semi': [
-    //   'error'
-    // ],
     quotes: ['error', 'single'],
     'no-unused-vars': 'error',
     semi: ['error', 'always'],
     'prettier/prettier': ['error'],
+    '@typescript-eslint/strict-boolean-expressions': 'off',
+    '@typescript-eslint/consistent-type-assertions': 'off',
+    '@typescript-eslint/consistent-type-definitions': 'off',
+    '@typescript-eslint/ban-types': 'off',
   },
 };
