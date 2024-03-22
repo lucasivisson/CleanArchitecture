@@ -1,6 +1,7 @@
 class Animal {
   name: string;
   constructor() {
-    this.name = "teste";
+    let a;
+    this.name = 'teste';
   }
 }
