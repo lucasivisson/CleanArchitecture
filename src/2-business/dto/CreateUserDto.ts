@@ -5,7 +5,7 @@ export type InputCreateUserDto = {
   email: string;
   password: string;
   phoneNumber: string;
-  birthDate: Date;
+  birthDate: string;
 };
 
 export type OutputCreateUserDto = Either<{}, Error>;

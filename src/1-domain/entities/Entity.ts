@@ -1,7 +1,7 @@
 import { type EntityValidationError } from '../errors/EntityValidationError';
 import { type IValidatorStrategy } from '../validators/IValidatorStrategy';
 
-export abstract class Entity<T> {
+export class Entity<T> {
   private readonly props!: T;
   private validator: IValidatorStrategy<T>;
 

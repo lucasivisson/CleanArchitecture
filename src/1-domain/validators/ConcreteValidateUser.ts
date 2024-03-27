@@ -23,6 +23,12 @@ export class ConcreteValidateUser implements IValidatorStrategy<UserEntity> {
 
   public async validateFields(input: UserEntity): Promise<Either<EntityValidationError, null>> {
     try {
+      // this.name = input.name;
+      // this.email = input.email;
+      // this.password = input.password;
+      // this.phoneNumber = input.phoneNumber;
+      // this.birthDate = input.birthDate;
+      console.log('input', input);
       await validateOrReject(input);
       return null;
     } catch (error) {

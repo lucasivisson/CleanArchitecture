@@ -1,4 +1,4 @@
-import { Entity } from '.';
+import { Entity } from './Entity';
 import { type Either } from '../helpers/either';
 import { ConcreteValidateUser } from '../validators/ConcreteValidateUser';
 import { type IValidatorStrategy } from '../validators/IValidatorStrategy';
@@ -8,16 +8,16 @@ export type UserEntityInput = {
   email: string;
   password: string;
   phoneNumber: string;
-  birthDate: Date;
+  birthDate: string;
 };
 
 export class UserEntity extends Entity<UserEntity> {
-  private readonly validatorEntity: IValidatorStrategy<UserEntity> = new ConcreteValidateUser();
-  private name: string;
-  private email: string;
-  private password: string;
-  private phoneNumber: string;
-  private birthDate: Date;
+  public readonly validatorEntity: IValidatorStrategy<UserEntity> = new ConcreteValidateUser();
+  public name: string;
+  public email: string;
+  public password: string;
+  public phoneNumber: string;
+  public birthDate: string;
 
   async create(props: UserEntityInput): Promise<Either<UserEntity, Error>> {
     this.setValidator(this.validatorEntity);
