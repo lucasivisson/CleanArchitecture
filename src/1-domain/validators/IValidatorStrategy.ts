@@ -1,5 +1,5 @@
-import { type EntityError } from '../errors/EntityError';
+import { type EntityValidationError } from '../errors/EntityValidationError';
 
 export interface IValidatorStrategy<Class> {
-  validateFields: (input: Class) => Promise<EntityError | null>;
+  validateFields: (input: Class) => Promise<EntityValidationError | null>;
 }

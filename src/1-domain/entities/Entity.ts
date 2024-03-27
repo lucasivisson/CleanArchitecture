@@ -1,4 +1,4 @@
-import { type EntityError } from '../errors/EntityError';
+import { type EntityValidationError } from '../errors/EntityValidationError';
 import { type IValidatorStrategy } from '../validators/IValidatorStrategy';
 
 export abstract class Entity<T> {
@@ -13,7 +13,7 @@ export abstract class Entity<T> {
     this.validator = validator;
   }
 
-  public async validate(input: T): Promise<EntityError | null> {
+  public async validate(input: T): Promise<EntityValidationError | null> {
     return await this.validator.validateFields(input);
   }
 }
