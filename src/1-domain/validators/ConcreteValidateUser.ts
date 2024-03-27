@@ -2,6 +2,7 @@ import { IsDateString, IsEmail, IsString, type ValidationError, validateOrReject
 import { type UserEntity } from '../entities';
 import { EntityError } from '../errors/EntityError';
 import { type IValidatorStrategy } from './IValidatorStrategy';
+import { type Either } from '../helpers/either';
 
 export class ConcreteValidateUser implements IValidatorStrategy<UserEntity> {
   @IsString()
@@ -20,7 +21,7 @@ export class ConcreteValidateUser implements IValidatorStrategy<UserEntity> {
   @IsDateString()
   birthDate: string;
 
-  public async validateFields(input: UserEntity): Promise<EntityError | null> {
+  public async validateFields(input: UserEntity): Promise<Either<EntityError, null>> {
     try {
       await validateOrReject(input);
       return null;

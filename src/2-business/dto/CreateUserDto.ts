@@ -1,3 +1,5 @@
+import { type Either } from '../../1-domain/helpers/either';
+
 export type InputCreateUserDto = {
   name: string;
   email: string;
@@ -6,4 +8,4 @@ export type InputCreateUserDto = {
   birthDate: Date;
 };
 
-export type OutputCreateUserDto = {};
+export type OutputCreateUserDto = Either<{}, Error>;
