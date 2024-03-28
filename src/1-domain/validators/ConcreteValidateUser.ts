@@ -1,10 +1,11 @@
-import { IsDateString, IsEmail, IsString, type ValidationError, validateOrReject } from 'class-validator';
-import { type UserEntity } from '../entities';
+import { IsDateString, IsEmail, IsString, validateSync } from 'class-validator';
+import { type IUserEntity } from '../entities';
 import { EntityValidationError } from '../errors/EntityValidationError';
 import { type IValidatorStrategy } from './IValidatorStrategy';
 import { type Either } from '../helpers/either';
+import 'reflect-metadata';
 
-export class ConcreteValidateUser implements IValidatorStrategy<UserEntity> {
+export class ConcreteValidateUser implements IValidatorStrategy {
   @IsString()
   name: string;
 
@@ -21,19 +22,19 @@ export class ConcreteValidateUser implements IValidatorStrategy<UserEntity> {
   @IsDateString()
   birthDate: string;
 
-  public async validateFields(input: UserEntity): Promise<Either<EntityValidationError, null>> {
-    try {
-      // this.name = input.name;
-      // this.email = input.email;
-      // this.password = input.password;
-      // this.phoneNumber = input.phoneNumber;
-      // this.birthDate = input.birthDate;
-      console.log('input', input);
-      await validateOrReject(input);
-      return null;
-    } catch (error) {
-      const errors = error as ValidationError;
+  constructor(props: IUserEntity) {
+    this.name = props.name;
+    this.email = props.email;
+    this.password = props.password;
+    this.phoneNumber = props.phoneNumber;
+    this.birthDate = props.birthDate;
+  }
+
+  public validateFields(): Either<EntityValidationError, null> {
+    const errors = validateSync(this);
+    if (errors && errors.length > 0) {
       throw new EntityValidationError(errors);
     }
+    return null;
   }
 }

@@ -1,19 +1,20 @@
 import { type EntityValidationError } from '../errors/EntityValidationError';
+import { type Either } from '../helpers/either';
 import { type IValidatorStrategy } from '../validators/IValidatorStrategy';
 
 export class Entity<T> {
   private readonly props!: T;
-  private validator: IValidatorStrategy<T>;
+  private validator: IValidatorStrategy;
 
   public export(): T {
     return { ...this.props };
   }
 
-  public setValidator(validator: IValidatorStrategy<T>): void {
+  public setValidator(validator: IValidatorStrategy): void {
     this.validator = validator;
   }
 
-  public async validate(input: T): Promise<EntityValidationError | null> {
-    return await this.validator.validateFields(input);
+  public validate(): Either<EntityValidationError, null> {
+    return this.validator.validateFields();
   }
 }

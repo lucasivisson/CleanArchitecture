@@ -11,7 +11,7 @@ export class CreateUserUseCase extends UseCase<InputCreateUserDto, OutputCreateU
 
   public async exec(input: InputCreateUserDto): Promise<OutputCreateUserDto> {
     try {
-      const user = await new UserEntity().create({ ...input });
+      const user = new UserEntity().create({ ...input });
       if (user instanceof Error) {
         return user;
       }
