@@ -1,9 +1,12 @@
-import { type IUserEntity } from '../../../1-domain/entities';
+import { type TUserEntity } from '../../../1-domain/entities';
+import { type Either } from '../../../1-domain/helpers/either';
+
+export type TUserRepository = TUserEntity;
 
 export interface IUserRepository {
-  create: (user: IUserEntity) => Promise<{}>;
-  update: (id: string) => Promise<{}>;
-  show: (id: string) => Promise<{ user: IUserEntity }>;
-  index: () => Promise<{ users: IUserEntity[] }>;
-  delete: (id: string) => Promise<{}>;
+  create: (user: TUserEntity) => Promise<Either<TUserRepository, Error>>;
+  update: (id: string) => Promise<Either<TUserRepository, Error>>;
+  show: (id: string) => Promise<Either<TUserRepository, Error>>;
+  index: () => Promise<Either<TUserRepository[], Error>>;
+  delete: (id: string) => Promise<Either<{}, Error>>;
 }

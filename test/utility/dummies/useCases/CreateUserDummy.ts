@@ -1,6 +1,6 @@
-import { type IUserEntity } from '../../../../src/1-domain/entities';
+import { type TUserEntity } from '../../../../src/1-domain/entities';
 
-export const FakeUserEntityInput: IUserEntity = {
+export const CreateUserInput: TUserEntity = {
   name: 'teste',
   email: 'lucas@gmail.com',
   password: '312312323',
@@ -8,7 +8,7 @@ export const FakeUserEntityInput: IUserEntity = {
   birthDate: new Date('2000-01-01').toISOString(),
 };
 
-export const FakeInvalidUserEntityInput: IUserEntity = {
+export const InvalidCreateUserInput: TUserEntity = {
   name: 'teste',
   email: 'teste',
   password: '312312323',

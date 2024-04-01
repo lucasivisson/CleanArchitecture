@@ -1,5 +1,5 @@
 import { IsDateString, IsEmail, IsString, validateSync } from 'class-validator';
-import { type IUserEntity } from '../entities';
+import { type TUserEntity } from '../entities';
 import { EntityValidationError } from '../errors/EntityValidationError';
 import { type IValidatorStrategy } from './IValidatorStrategy';
 import { type Either } from '../helpers/either';
@@ -22,7 +22,7 @@ export class ConcreteValidateUser implements IValidatorStrategy {
   @IsDateString()
   birthDate: string;
 
-  constructor(props: IUserEntity) {
+  constructor(props: TUserEntity) {
     this.name = props.name;
     this.email = props.email;
     this.password = props.password;
@@ -33,7 +33,7 @@ export class ConcreteValidateUser implements IValidatorStrategy {
   public validateFields(): Either<EntityValidationError, null> {
     const errors = validateSync(this);
     if (errors && errors.length > 0) {
-      throw new EntityValidationError(errors);
+      return new EntityValidationError(errors);
     }
     return null;
   }
