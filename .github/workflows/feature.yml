@@ -2,7 +2,8 @@ name: FEATURE
 on:
   workflow_dispatch:
   push:
-    - main
+    branches:
+      - main
 jobs:
   validate:
   runs-on: ubuntu-latest

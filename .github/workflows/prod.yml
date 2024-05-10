@@ -3,7 +3,8 @@ run-name: Deploy to ${{ github.ref_name }} by ${{ github.actor }} 🚀
 on:
   workflow_dispatch:
   push:
-    - main
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
