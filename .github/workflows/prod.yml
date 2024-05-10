@@ -1,8 +1,11 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: PROD
+run-name: Deploy to ${{ github.ref_name }} by ${{ github.actor }} 🚀
+on:
+  workflow_dispatch:
+  push:
+    - main
 jobs:
-  Explore-GitHub-Actions:
+  build:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
