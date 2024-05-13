@@ -1,0 +1,17 @@
+name: 'Validate code'
+description: 'Typecheck + ESLint + tests'
+runs:
+  using: 'composite'
+  steps:
+    - name: Run Typecheck
+      run: npm run typecheck
+      shell: bash
+
+    - name: Run lint:fix
+      run: npm run lint:fix
+      shell: bash
+
+    - name: Run tests
+      run: npm run test
+      shell: bash
+
