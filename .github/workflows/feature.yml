@@ -27,4 +27,4 @@ jobs:
         run: npm install
 
       - name: Run Validate
-        run: ./workflows/validate
+        run: ./.github/workflows/validate
