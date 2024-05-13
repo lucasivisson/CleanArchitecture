@@ -26,11 +26,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Typecheck
-        run: npm run typecheck
-
-      - name: Run lint:fix
-        run: npm run lint:fix
-
-      - name: Run tests
-        run: npm run test
+      - name: 'Validate project'
+        uses: actions/validate@v1
