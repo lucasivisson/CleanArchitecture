@@ -4,14 +4,19 @@ runs:
   using: 'composite'
   steps:
     - name: Run Typecheck
-      run: npm run typecheck
+      run: |
+        echo "Running Typecheck"
+        npm run typecheck
       shell: bash
 
     - name: Run lint:fix
-      run: npm run lint:fix
+      run: |
+        echo "Running ESlint"
+        npm run lint:fix
       shell: bash
 
     - name: Run tests
-      run: npm run test
+      run: |
+        echo "Running tests"
+        npm run test
       shell: bash
-
