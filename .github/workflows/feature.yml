@@ -26,8 +26,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Grant execute permissions to validate.yml
-        run: chmod +x .github/workflows/validate.yml
-
       - name: 'Validate project'
-        run: node ./.github/workflows/validate.yml
+        uses: actions/validate@v1
