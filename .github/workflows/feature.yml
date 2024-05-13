@@ -30,4 +30,4 @@ jobs:
         run: chmod +x .github/workflows/validate.yml
 
       - name: 'Validate project'
-        run: npm run ./.github/workflows/validate.yml
+        run: node ./.github/workflows/validate.yml
